@@ -16,9 +16,14 @@ namespace NotificationSender.WithoutDI;
 /// </summary>
 public class UserNotificationService
 {
-    public void Notify(string userId, string message)
+    public void Notify(string userId, string message) 
     {
-        // TODO: реализовать по заданию 1.1
-        throw new NotImplementedException();
-    }
+         if (string.IsNullOrWhiteSpace(userId))
+        throw new ArgumentException("userId не может быть пустым", nameof(userId));
+       var Logger = new FileLogger(); 
+       var Sender = new EmailSender();
+       Sender.Send(userId,message);
+       Logger.log($"отправлено сообщение {message} пользователю {userId}");
+        
+    } 
 }

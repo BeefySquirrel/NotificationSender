@@ -7,5 +7,9 @@
 //
 // Задание 1.2: соберите WithDI.UserNotificationService через контейнер
 //   Microsoft.Extensions.DependencyInjection и вызовите Notify отсюда.
+using NotificationSender.WithoutDI;
+ 
+var service = new UserNotificationService();
 
-Console.WriteLine("NotificationSender: выберите задание и реализуйте его (см. TODO в WithoutDI/ и WithDI/).");
+service.Notify("user-4", "Ваш первый заказ готов");
+service.Notify("user-3", "Документы сброшюрованы бля буду");
