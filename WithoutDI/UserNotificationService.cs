@@ -21,8 +21,8 @@ public class UserNotificationService
          if (string.IsNullOrWhiteSpace(userId))
         throw new ArgumentException("userId не может быть пустым", nameof(userId));
        var Logger = new FileLogger(); 
-       var Sender = new EmailSender();
-       Sender.Send(userId,message);
+       var Sender = new SmsSender();
+       Sender.send(userId,message);
        Logger.log($"отправлено сообщение {message} пользователю {userId}");
         
     } 
