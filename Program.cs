@@ -7,9 +7,17 @@
 //
 // Задание 1.2: соберите WithDI.UserNotificationService через контейнер
 //   Microsoft.Extensions.DependencyInjection и вызовите Notify отсюда.
-using NotificationSender.WithoutDI;
+using NotificationSender.WithDI;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
  
-var service = new UserNotificationService();
-
-service.Notify("user-4", "Ваш первый заказ готов");
+var builder = Host.CreateApplicationBuilder(args);
+builder.Services.AddSingleton<IAppLogger, FileLogger>();
+builder.Services.AddSingleton<IMessageSender, EmailSender>();
+builder.Services.AddSingleton<UserNotificationService>();
+ 
+using var host = builder.Build();
+var service = host.Services.GetRequiredService<UserNotificationService>();
+service.Notify("user-1", "Ваш заказ готов");
+service.Notify("user-4", "Ваш четенький заказ готов");
 service.Notify("user-3", "Документы сброшюрованы бля буду");

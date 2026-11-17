@@ -1,3 +1,4 @@
+namespace NotificationSender.WithoutDI;
 public class FileLogger
 {
    public void log (string message)

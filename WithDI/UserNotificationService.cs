@@ -1,4 +1,6 @@
 namespace NotificationSender.WithDI;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 /// <summary>
 /// ЗАДАНИЕ 1.2 — тот же сервис, но С внедрением зависимостей.
@@ -15,15 +17,24 @@ namespace NotificationSender.WithDI;
 /// Обратите внимание: контейнер — это лишь способ собрать объект снаружи.
 /// new UserNotificationService(sender, logger) в тесте — тоже DI, только ручное.
 /// </summary>
+    
+    
 public sealed class UserNotificationService
 {
-    // TODO: поля для зависимостей (интерфейсы, не классы!)
-
-    // TODO: конструктор, принимающий зависимости
+    private readonly IMessageSender _sender;
+    private readonly IAppLogger _logger;
+    public UserNotificationService(IMessageSender sender,IAppLogger logger)
+    {
+        _sender = sender;
+        _logger = logger;
+    }
 
     public void Notify(string userId, string message)
     {
-        // TODO: реализовать по заданию 1.2
-        throw new NotImplementedException();
+       if (string.IsNullOrWhiteSpace(userId))
+            throw new ArgumentException("User id is required", nameof(userId));
+ 
+        _sender.Send(userId, message);
+        _logger.Log($"Notification sent to {userId}");
     }
 }
