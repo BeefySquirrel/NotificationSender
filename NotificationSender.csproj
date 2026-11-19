@@ -11,6 +11,12 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="11.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
   <!-- Тестовый проект лежит внутри папки основного: не компилировать его файлы здесь -->
   <ItemGroup>
     <Compile Remove="NotificationSender.Tests/**/*.cs" />

@@ -1,4 +1,5 @@
 ﻿namespace NotificationSender.Tests;
+
 using Moq;
 using NotificationSender.WithDI;
 
@@ -23,7 +24,7 @@ public class UnitTest1
             l => l.Log(It.IsAny<string>()),
             Times.Once);   // Log вызван ровно 1 раз, аргумент любой
     }
-    
+
     [Theory]                   // параметризованный тест: один метод, много наборов данных
     [InlineData("")]
     [InlineData(null)]
