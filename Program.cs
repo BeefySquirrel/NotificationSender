@@ -13,11 +13,23 @@ using Microsoft.Extensions.Hosting;
  
 var builder = Host.CreateApplicationBuilder(args);
 builder.Services.AddSingleton<IAppLogger, FileLogger>();
-builder.Services.AddSingleton<IMessageSender, EmailSender>();
+builder.Services.AddScoped<IMessageSender, EmailSender>();
 builder.Services.AddSingleton<UserNotificationService>();
  
 using var host = builder.Build();
-var service = host.Services.GetRequiredService<UserNotificationService>();
+/*var service = host.Services.GetRequiredService<UserNotificationService>();
 service.Notify("user-1", "Ваш заказ готов");
 service.Notify("user-4", "Ваш четенький заказ готов");
-service.Notify("user-3", "Документы сброшюрованы бля буду");
+service.Notify("user-3", "Документы сброшюрованы бля буду");*/
+/*var a = (EmailSender)host.Services.GetRequiredService<IMessageSender>();
+var b = (EmailSender)host.Services.GetRequiredService<IMessageSender>();*/
+using var scope1 = host.Services.CreateScope();
+var a = (EmailSender)scope1.ServiceProvider.GetRequiredService<IMessageSender>();
+var b = (EmailSender)scope1.ServiceProvider.GetRequiredService<IMessageSender>(); // тот же Id, что у a
+
+using var scope2 = host.Services.CreateScope();
+var c = (EmailSender)scope2.ServiceProvider.GetRequiredService<IMessageSender>(); // другой Id
+Console.WriteLine(a.Id);
+Console.WriteLine(b.Id);
+Console.WriteLine(c.Id);
+
