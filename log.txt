@@ -1,0 +1,31 @@
+
+отправлено сообщение Ваш заказ готов пользователю user-1
+отправлено сообщение Документы напечатаны пользователю user-2
+отправлено сообщение Ваш заказ готов пользователю user-1
+отправлено сообщение Документы напечатаны пользователю user-2
+отправлено сообщение Ваш первый заказ готов пользователю user-4
+отправлено сообщение Документы сброшюрованы бля буду пользователю user-3
+отправлено сообщение Ваш первый заказ готов пользователю user-4
+отправлено сообщение Документы сброшюрованы бля буду пользователю user-3
+отправлено сообщение Ваш первый заказ готов пользователю user-4
+отправлено сообщение Документы сброшюрованы бля буду пользователю user-3
+отправлено сообщение Ваш первый заказ готов пользователю user-4
+отправлено сообщение Документы сброшюрованы бля буду пользователю user-3
+Notification sent to user-1
+Notification sent to user-4
+Notification sent to user-3
+Notification sent to user-1
+Notification sent to user-4
+Notification sent to user-3
+Notification sent to user-1
+Notification sent to user-4
+Notification sent to user-3
+Notification sent to user-1
+Notification sent to user-4
+Notification sent to user-3
+Notification sent to user-1
+Notification sent to user-4
+Notification sent to user-3
+Notification sent to user-1
+Notification sent to user-4
+Notification sent to user-3
