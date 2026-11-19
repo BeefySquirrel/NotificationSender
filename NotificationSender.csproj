@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -9,6 +9,11 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="11.0.0" />
+  </ItemGroup>
+
+  <!-- Тестовый проект лежит внутри папки основного: не компилировать его файлы здесь -->
+  <ItemGroup>
+    <Compile Remove="NotificationSender.Tests/**/*.cs" />
   </ItemGroup>
 
 </Project>
