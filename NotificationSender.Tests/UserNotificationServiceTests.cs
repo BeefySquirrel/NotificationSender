@@ -24,13 +24,16 @@ public class UnitTest1
             Times.Once);   // Log вызван ровно 1 раз, аргумент любой
     }
     
-    [Fact]
-    public void Notify_EmptyUserId()
+    [Theory]                   // параметризованный тест: один метод, много наборов данных
+    [InlineData("")]
+    [InlineData(null)]
+    [InlineData("   ")]
+    public void Notify_InvalidUserId(string? userId)
     {
         var senderMock = new Mock<IMessageSender>();
         var loggerMock = new Mock<IAppLogger>();
         var service = new UserNotificationService(senderMock.Object, loggerMock.Object);
-        Assert.Throws<ArgumentException>(() => service.Notify("", "Ваш заказ готов"));
+        Assert.Throws<ArgumentException>(() => service.Notify(userId!, "Ваш заказ готов"));
         senderMock.Verify(s => s.Send(It.IsAny<string>(), It.IsAny<string>()), Times.Never);
         loggerMock.Verify(l => l.Log(It.IsAny<string>()), Times.Never);
     }
